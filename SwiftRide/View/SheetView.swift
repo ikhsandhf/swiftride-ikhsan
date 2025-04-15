@@ -192,7 +192,6 @@ struct BusCard: View {
             }
         }
         .padding()
-
         .onAppear {
             if showRouteDetailSheet {
                 selectedSheet = .routeDetailView
@@ -217,10 +216,12 @@ struct BusRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(bus.name)
                     .font(.headline)
-
-                Text("Will be arriving \(etaMinutes == 0 ? "soon" : "in \(etaMinutes) \(etaMinutes == 1 ? "minute" : "minutes" )")")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                HStack{
+                    Text(bus.licensePlate)
+                    Text("Will be arriving \(etaMinutes == 0 ? "soon" : "in \(etaMinutes) \(etaMinutes == 1 ? "minute" : "minutes" )")")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
